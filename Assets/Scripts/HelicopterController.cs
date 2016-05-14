@@ -53,9 +53,9 @@ public class HelicopterController : MonoBehaviour
         float tempX = 0;
 
         EngineForce += Input.GetAxis("Vertical") * 0.1f;
-        var rotate = Input.GetAxis("Rotate") * 50f;
+        var rotate = Input.GetAxis("RotateRight") * 50f - Input.GetAxis("RotateLeft") * 50f;
         var forward = Input.GetAxis("Forward") * 50f;
-        var side = Input.GetAxis("Side") * 50f;
+        var side = -Input.GetAxis("Side") * 50f;
 
         // stable forward
         if (hMove.y > threshold)
