@@ -18,9 +18,9 @@ InputManager:
     sensitivity: 3
     snap: 1
     invert: 0
-    type: 0
-    axis: 0
-    joyNum: 7
+    type: 2
+    axis: 12
+    joyNum: 0
   - serializedVersion: 3
     m_Name: RotateRight
     descriptiveName: 
@@ -34,9 +34,9 @@ InputManager:
     sensitivity: 3
     snap: 1
     invert: 0
-    type: 0
-    axis: 0
-    joyNum: 8
+    type: 2
+    axis: 11
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Forward
     descriptiveName: 
@@ -49,8 +49,8 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
-    type: 0
+    invert: 1
+    type: 2
     axis: 1
     joyNum: 1
   - serializedVersion: 3
@@ -65,10 +65,10 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
-    type: 0
-    axis: 1
-    joyNum: 2
+    invert: 1
+    type: 2
+    axis: 3
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Side
     descriptiveName: 
@@ -82,6 +82,6 @@ InputManager:
     sensitivity: 3
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
     joyNum: 1

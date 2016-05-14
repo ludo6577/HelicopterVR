@@ -48,7 +48,7 @@ public class HelicopterController : MonoBehaviour
   
     void FixedUpdate()
     {
-        var threshold = 0.1f;
+        var threshold = 1f;
         float tempY = 0;
         float tempX = 0;
 
