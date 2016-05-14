@@ -6,10 +6,18 @@ public class HelicopterController : MonoBehaviour
 {
     public AudioSource HelicopterSound;
     public AudioSource WindSound;
-    // public ControlPanel ControlPanel;
+    public AudioSource ExplosionSound;
+
+    public ParticleSystem ExplosionParticule;
+
     public Rigidbody HelicopterModel;
+
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
+
+    public GameObject FadePlane;
+
+    public float MagnitudeForExplosion = 10f;
 
     public float TurnForce = 3f;
     public float ForwardForce = 15f;
@@ -36,17 +44,33 @@ public class HelicopterController : MonoBehaviour
         }
     }
 
+    private Quaternion InitialRotation;
+    private Vector3 InitialPosition;
+
+
     private Vector2 hMove = Vector2.zero;
     private Vector2 hTilt = Vector2.zero;
     private float hTurn = 0f;
     public bool IsOnGround = true;
+
+    private enum Fade {
+        In,
+        Out,
+        None
+    };
+    private Fade fade = Fade.None;
     
+    void Start()
+    {
+        InitialRotation = HelicopterModel.transform.rotation;
+        InitialPosition = HelicopterModel.transform.position;
+    }
+
 	void Update () {
 	}
   
     void FixedUpdate()
     {
-        Debug.Log(HelicopterModel.velocity.magnitude);
         WindSound.pitch = Mathf.Clamp(HelicopterModel.velocity.magnitude / 30, 0, 1.4f);
 
         var threshold = 5f;
@@ -111,6 +135,7 @@ public class HelicopterController : MonoBehaviour
         LiftProcess();
         MoveProcess();
         TiltProcess();
+        FadeProcess();
     }
 
     private void MoveProcess()
@@ -135,9 +160,52 @@ public class HelicopterController : MonoBehaviour
         HelicopterModel.transform.localRotation = Quaternion.Euler(hTilt.y, HelicopterModel.transform.localEulerAngles.y, -hTilt.x);
     }
 
+    private void FadeProcess()
+    {
+        if (fade!=Fade.None)
+        {
+            if (!FadePlane.activeSelf)
+                FadePlane.SetActive(true);
+
+            var material = FadePlane.GetComponent<Renderer>().material;
+            var color = material.color;
+            if (fade == Fade.In && color.a <= 1f)
+            {
+                material.color = new Color(color.r, color.g, color.b, color.a + 0.02f);
+            }
+            else if (material.color.a >= 0f)
+            {
+                if (fade == Fade.In)
+                {
+                    fade = Fade.Out;
+                    hTilt.y = 0;
+                    hTilt.x = 0;
+                    hMove.x = 0;
+                    hMove.y = 0;
+                    EngineForce = 0;
+                    HelicopterModel.velocity = Vector3.zero;
+                    HelicopterModel.transform.rotation = InitialRotation;
+                    HelicopterModel.transform.position = InitialPosition;
+                    HelicopterModel.transform.localRotation = Quaternion.identity;
+                }
+                material.color = new Color(color.r, color.g, color.b, color.a - 0.02f);
+            }
+            else
+            {
+                fade = Fade.None;
+            }
+        }
+    }
+
     private void OnCollisionEnter()
     {
         IsOnGround = true;
+        if (fade == Fade.None && HelicopterModel.velocity.magnitude > MagnitudeForExplosion)
+        {
+            ExplosionParticule.Play();
+            ExplosionSound.Play();
+            fade = Fade.In;
+        }
     }
 
     private void OnCollisionExit()
