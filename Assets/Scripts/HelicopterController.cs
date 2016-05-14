@@ -82,16 +82,14 @@ public class HelicopterController : MonoBehaviour
         // stable forward
         if (hMove.y > 0)
             tempY = - Time.fixedDeltaTime;
-        else
-            if (hMove.y < 0)
-                tempY = Time.fixedDeltaTime;
+        else if (hMove.y < 0)
+            tempY = Time.fixedDeltaTime;
 
         // stable lurn
         if (hMove.x > 0)
             tempX = -Time.fixedDeltaTime;
-        else
-            if (hMove.x < 0)
-                tempX = Time.fixedDeltaTime;
+        else if (hMove.x < 0)
+            tempX = Time.fixedDeltaTime;
 
 
         foreach (var pressedKeyCode in obj)
