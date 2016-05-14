@@ -48,6 +48,8 @@ public class HelicopterController : MonoBehaviour
     private Quaternion InitialRotation;
     private Vector3 InitialPosition;
 
+    private Vector3 InitialHeadPosition;
+
     private bool getHeadOut = false;
     private Vector2 hMove = Vector2.zero;
     private Vector2 hTilt = Vector2.zero;
@@ -65,6 +67,8 @@ public class HelicopterController : MonoBehaviour
     {
         InitialRotation = HelicopterModel.transform.rotation;
         InitialPosition = HelicopterModel.transform.position;
+
+        InitialHeadPosition = CameraMover.transform.localPosition;
     }
 
 	void Update () {
@@ -208,11 +212,11 @@ public class HelicopterController : MonoBehaviour
     {
         if (getTheHeadOut)
         {
-            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, new Vector3(-0.65f, 0.25f, 0.65f), 0.04f);
+            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, new Vector3(-1.3f, 1f, 0.65f), 0.04f);
         }
-        else if(CameraMover.transform.localPosition != new Vector3(0f, 0f, 0f))
+        else if(CameraMover.transform.localPosition != InitialHeadPosition)
         {
-            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, new Vector3(0f, 0f, 0f), 0.1f);
+            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, InitialHeadPosition, 0.1f);
         }
     }
 
