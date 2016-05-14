@@ -30,15 +30,15 @@ public class ControlPanel : MonoBehaviour {
     private void Awake()
     {
         keyCodes = new[] {
-                            SpeedUp,
-                            SpeedDown,
-                            Forward,
-                            Back,
-                            Left,
-                            Right,
-                            TurnLeft,
-                            TurnRight
-                        };
+                    SpeedUp,
+                    SpeedDown,
+                    Forward,
+                    Back,
+                    Left,
+                    Right,
+                    TurnLeft,
+                    TurnRight
+                };
 
     }
 
@@ -59,15 +59,15 @@ public class ControlPanel : MonoBehaviour {
 	    if (KeyPressed != null)
 	        KeyPressed(pressedKeyCode.ToArray());
 
-        // for test
         if (Input.GetKey(MusicOffOn))
         {
-           if (  MusicSound.volume == 1) return;
-/*            if (MusicSound.isPlaying)
+            if (MusicSound.isPlaying)
                 MusicSound.Stop();
-            else*/
+            else
+            {
                 MusicSound.volume = 1;
                 MusicSound.Play();
+            }
         }
       
 	}
