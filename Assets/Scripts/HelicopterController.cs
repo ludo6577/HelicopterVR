@@ -46,11 +46,17 @@ public class HelicopterController : MonoBehaviour
         float tempY = 0;
         float tempX = 0;
 
+#if UNITY_EDITOR
+        EngineForce += Input.GetKey(KeyCode.LeftShift) ? 0.2f : Input.GetKey(KeyCode.Space)? -1f : 0f;
+        var rotate = Input.GetKey(KeyCode.LeftArrow) ? -100f : Input.GetKey(KeyCode.RightArrow) ? 100f : 0f;
+        var forward = Input.GetKey(KeyCode.Z) ? 100f : Input.GetKey(KeyCode.S) ? -100f : 0f;
+        var side = Input.GetKey(KeyCode.Q) ? 100f : Input.GetKey(KeyCode.D) ? -100f : 0f;
+#else         
         EngineForce += Input.GetAxis("Vertical") * 0.2f;
         var rotate = Input.GetAxis("RotateRight") * 100f - Input.GetAxis("RotateLeft") * 100f;
         var forward = Input.GetAxis("Forward") * 100f;
         var side = -Input.GetAxis("Side") * 100f;
-        Debug.Log(rotate);
+#endif
 
         // stable forward
         if (hMove.y > threshold)
@@ -104,7 +110,7 @@ public class HelicopterController : MonoBehaviour
     {
         var turn = TurnForce * Mathf.Lerp(hMove.x, hMove.x * (turnTiltForcePercent - Mathf.Abs(hMove.y)), Mathf.Max(0f, hMove.y));
         hTurn = Mathf.Lerp(hTurn, turn, Time.fixedDeltaTime * TurnForce);
-        //HelicopterModel.AddRelativeTorque(0f, hTurn * HelicopterModel.mass, 0f);
+        HelicopterModel.AddRelativeTorque(0f, hTurn * HelicopterModel.mass, 0f);
         HelicopterModel.AddRelativeForce(Vector3.forward * Mathf.Max(0f, hMove.y * ForwardForce * HelicopterModel.mass));
     }
 
