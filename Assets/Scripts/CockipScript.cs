@@ -21,7 +21,7 @@ public class CockipScript : MonoBehaviour {
 	void Update () {
         var pos = LevelBack.transform.localPosition;
         var rotX = helicopter.transform.rotation.x;
-        LevelBack.transform.localPosition = new Vector3(pos.x, initialPosition.y + rotX * 10, pos.z);
+        LevelBack.transform.localPosition = new Vector3(pos.x, initialPosition.y + rotX * 0.1f, pos.z);
 
         var rot = LevelBack.transform.localRotation.eulerAngles;
         var rotZ = helicopter.transform.rotation.z;
