@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2f963ad53fe28ea4b9e5e5b21b82a0eb
-timeCreated: 1463193640
+guid: 00816e19b91f1724e89aca7e961dd002
+timeCreated: 1463193395
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: Cube
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
