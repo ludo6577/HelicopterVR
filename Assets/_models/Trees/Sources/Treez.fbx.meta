@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 791484e502711c042a8e9a45daf0853c
+timeCreated: 1458480581
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: TreeA1
+    100002: TreeA2
+    100004: TreeA3
+    100006: TreeA4
+    100008: TreeB1
+    100010: TreeB2
+    100012: TreeB3
+    100014: TreeB4
+    100016: TreeB5
+    100018: TreeB6
+    100020: TreeC1
+    100022: TreeC2
+    100024: TreeC3
+    100026: TreeC4
+    100028: TreeD1
+    100030: TreeD2
+    100032: TreeD3
+    100034: TreeD4
+    100036: TreeD5
+    100038: //RootNode
+    400000: TreeA1
+    400002: TreeA2
+    400004: TreeA3
+    400006: TreeA4
+    400008: TreeB1
+    400010: TreeB2
+    400012: TreeB3
+    400014: TreeB4
+    400016: TreeB5
+    400018: TreeB6
+    400020: TreeC1
+    400022: TreeC2
+    400024: TreeC3
+    400026: TreeC4
+    400028: TreeD1
+    400030: TreeD2
+    400032: TreeD3
+    400034: TreeD4
+    400036: TreeD5
+    400038: //RootNode
+    2300000: TreeA1
+    2300002: TreeA2
+    2300004: TreeA3
+    2300006: TreeA4
+    2300008: TreeB1
+    2300010: TreeB2
+    2300012: TreeB3
+    2300014: TreeB4
+    2300016: TreeB5
+    2300018: TreeB6
+    2300020: TreeC1
+    2300022: TreeC2
+    2300024: TreeC3
+    2300026: TreeC4
+    2300028: TreeD1
+    2300030: TreeD2
+    2300032: TreeD3
+    2300034: TreeD4
+    2300036: TreeD5
+    3300000: TreeA1
+    3300002: TreeA2
+    3300004: TreeA3
+    3300006: TreeA4
+    3300008: TreeB1
+    3300010: TreeB2
+    3300012: TreeB3
+    3300014: TreeB4
+    3300016: TreeB5
+    3300018: TreeB6
+    3300020: TreeC1
+    3300022: TreeC2
+    3300024: TreeC3
+    3300026: TreeC4
+    3300028: TreeD1
+    3300030: TreeD2
+    3300032: TreeD3
+    3300034: TreeD4
+    3300036: TreeD5
+    4300000: TreeC3
+    4300002: TreeC4
+    4300004: TreeD2
+    4300006: TreeD1
+    4300008: TreeD3
+    4300010: TreeD4
+    4300012: TreeD5
+    4300014: TreeC2
+    4300016: TreeC1
+    4300018: TreeB5
+    4300020: TreeB6
+    4300022: TreeB1
+    4300024: TreeB2
+    4300026: TreeB4
+    4300028: TreeB3
+    4300030: TreeA2
+    4300032: TreeA1
+    4300034: TreeA3
+    4300036: TreeA4
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
