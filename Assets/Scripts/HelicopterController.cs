@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HelicopterController : MonoBehaviour
 {
     public AudioSource HelicopterSound;
-    public ControlPanel ControlPanel;
+   // public ControlPanel ControlPanel;
     public Rigidbody HelicopterModel;
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
@@ -37,16 +38,68 @@ public class HelicopterController : MonoBehaviour
     public bool IsOnGround = true;
 
     // Use this for initialization
-	void Start ()
+	/*void Start ()
 	{
         ControlPanel.KeyPressed += OnKeyPressed;
-	}
+	}*/
 
 	void Update () {
 	}
   
     void FixedUpdate()
     {
+        var threshold = 0.1f;
+        float tempY = 0;
+        float tempX = 0;
+
+        EngineForce += Input.GetAxis("Vertical") * 0.1f;
+        var rotate = Input.GetAxis("Rotate") * 50f;
+        var forward = Input.GetAxis("Forward") * 50f;
+        var side = Input.GetAxis("Side") * 50f;
+
+        // stable forward
+        if (hMove.y > threshold)
+            tempY = -Time.fixedDeltaTime;
+        else if (hMove.y < -threshold)
+            tempY = Time.fixedDeltaTime;
+
+        // stable lurn
+        if (hMove.x > threshold)
+            tempX = -Time.fixedDeltaTime;
+        else if (hMove.x < -threshold)
+            tempX = Time.fixedDeltaTime;
+
+        if (Math.Abs(forward) > threshold && !IsOnGround)
+        {
+            if (forward > threshold)
+                tempY = Time.fixedDeltaTime;
+            else
+                tempY = -Time.fixedDeltaTime;
+
+            hMove.y += tempY;
+            hMove.y = Mathf.Clamp(hMove.y, -1, 1);
+        }
+
+        if (Math.Abs(side) > threshold && !IsOnGround)
+        {
+            if (side > threshold)
+                tempX = -Time.fixedDeltaTime;
+            else
+                tempX = Time.fixedDeltaTime;
+
+            hMove.x += tempX;
+            hMove.x = Mathf.Clamp(hMove.x, -1, 1);
+        }
+
+        if (Math.Abs(rotate) > threshold && !IsOnGround) { 
+            var force = 0f;
+            if (rotate > threshold && !IsOnGround)
+                force = (turnForcePercent - Mathf.Abs(hMove.y)) * HelicopterModel.mass;
+            else
+                force = -(turnForcePercent - Mathf.Abs(hMove.y)) * HelicopterModel.mass;
+            HelicopterModel.AddRelativeTorque(0f, force, 0);
+        }
+        
         LiftProcess();
         MoveProcess();
         TiltProcess();
@@ -73,7 +126,7 @@ public class HelicopterController : MonoBehaviour
         hTilt.y = Mathf.Lerp(hTilt.y, hMove.y * ForwardTiltForce, Time.deltaTime);
         HelicopterModel.transform.localRotation = Quaternion.Euler(hTilt.y, HelicopterModel.transform.localEulerAngles.y, -hTilt.x);
     }
-
+    /*
     private void OnKeyPressed(PressedKeyCode[] obj)
     {
         float tempY = 0;
@@ -97,49 +150,48 @@ public class HelicopterController : MonoBehaviour
             switch (pressedKeyCode)
             {
                 case PressedKeyCode.SpeedUpPressed:
-
                     EngineForce += 0.1f;
                     break;
-                case PressedKeyCode.SpeedDownPressed:
 
+                case PressedKeyCode.SpeedDownPressed:
                     EngineForce -= 0.12f;
                     if (EngineForce < 0) EngineForce = 0;
                     break;
 
-                    case PressedKeyCode.ForwardPressed:
-
+                case PressedKeyCode.ForwardPressed:
                     if (IsOnGround) break;
                     tempY = Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.BackPressed:
 
+                case PressedKeyCode.BackPressed:
                     if (IsOnGround) break;
                     tempY = -Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.LeftPressed:
 
+                case PressedKeyCode.LeftPressed:
                     if (IsOnGround) break;
                     tempX = -Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.RightPressed:
 
+                case PressedKeyCode.RightPressed:
                     if (IsOnGround) break;
                     tempX = Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.TurnRightPressed:
-                    {
-                        if (IsOnGround) break;
-                        var force = (turnForcePercent - Mathf.Abs(hMove.y))*HelicopterModel.mass;
-                        HelicopterModel.AddRelativeTorque(0f, force, 0);
-                    }
+
+                case PressedKeyCode.TurnRightPressed:
+                {
+                    if (IsOnGround) break;
+                    var force = (turnForcePercent - Mathf.Abs(hMove.y))*HelicopterModel.mass;
+                    HelicopterModel.AddRelativeTorque(0f, force, 0);
+                }
                     break;
-                    case PressedKeyCode.TurnLeftPressed:
-                    {
-                        if (IsOnGround) break;
-                        
-                        var force = -(turnForcePercent - Mathf.Abs(hMove.y))*HelicopterModel.mass;
-                        HelicopterModel.AddRelativeTorque(0f, force, 0);
-                    }
+
+                case PressedKeyCode.TurnLeftPressed:
+                {
+                    if (IsOnGround) break;                        
+                    var force = -(turnForcePercent - Mathf.Abs(hMove.y))*HelicopterModel.mass;
+                    HelicopterModel.AddRelativeTorque(0f, force, 0);
+                }
                     break;
 
             }
@@ -151,7 +203,7 @@ public class HelicopterController : MonoBehaviour
         hMove.y += tempY;
         hMove.y = Mathf.Clamp(hMove.y, -1, 1);
 
-    }
+    }*/
 
     private void OnCollisionEnter()
     {

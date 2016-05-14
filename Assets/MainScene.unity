@@ -1243,7 +1243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HelicopterSound: {fileID: 603330062}
-  ControlPanel: {fileID: 1790072214}
   HelicopterModel: {fileID: 786398103}
   MainRotorController: {fileID: 1978543936}
   SubRotorController: {fileID: 481634395}
@@ -1832,16 +1831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7044a03184442244faa17e006c705ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicSound: {fileID: 1566651450}
-  SpeedUp: 304
-  SpeedDown: 32
-  Forward: 119
-  Back: 115
-  Left: 97
-  Right: 100
-  TurnLeft: 113
-  TurnRight: 101
-  MusicOffOn: 109
 --- !u!1 &1801574278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,14 +2084,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2097715037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097715036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2114,7 +2103,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097715036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2132,7 +2121,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097715036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 

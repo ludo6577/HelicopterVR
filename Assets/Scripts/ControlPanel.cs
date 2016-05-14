@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class ControlPanel : MonoBehaviour {
     public AudioSource MusicSound;
 
@@ -61,8 +61,11 @@ public class ControlPanel : MonoBehaviour {
 
         if (Input.GetKey(MusicOffOn))
         {
-            if (MusicSound.isPlaying)
+            if (MusicSound.volume == 1)
+            {
+                MusicSound.volume = 0;
                 MusicSound.Stop();
+            }
             else
             {
                 MusicSound.volume = 1;
@@ -72,3 +75,4 @@ public class ControlPanel : MonoBehaviour {
       
 	}
 }
+*/
