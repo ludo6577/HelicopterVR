@@ -15,6 +15,7 @@ public class HelicopterController : MonoBehaviour
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
 
+    public GameObject CameraMover;
     public GameObject FadePlane;
 
     public float MagnitudeForExplosion = 10f;
@@ -47,7 +48,7 @@ public class HelicopterController : MonoBehaviour
     private Quaternion InitialRotation;
     private Vector3 InitialPosition;
 
-
+    private bool getHeadOut = false;
     private Vector2 hMove = Vector2.zero;
     private Vector2 hTilt = Vector2.zero;
     private float hTurn = 0f;
@@ -82,11 +83,16 @@ public class HelicopterController : MonoBehaviour
         var rotate = Input.GetKey(KeyCode.LeftArrow) ? -100f : Input.GetKey(KeyCode.RightArrow) ? 100f : 0f;
         var forward = Input.GetKey(KeyCode.Z) ? 100f : Input.GetKey(KeyCode.S) ? -100f : 0f;
         var side = Input.GetKey(KeyCode.Q) ? 100f : Input.GetKey(KeyCode.D) ? -100f : 0f;
-#else         
+        var getHeadOut = Input.GetKey(KeyCode.E);
+#else
         EngineForce += Input.GetAxis("Vertical") * 0.2f;
         var rotate = Input.GetAxis("RotateRight") * 100f - Input.GetAxis("RotateLeft") * 100f;
         var forward = Input.GetAxis("Forward") * 100f;
         var side = -Input.GetAxis("Side") * 100f;
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+            getHeadOut = true;
+        if (Input.GetKeyUp(KeyCode.Joystick1Button2))
+            getHeadOut = false;
 #endif
 
         // stable forward
@@ -136,6 +142,7 @@ public class HelicopterController : MonoBehaviour
         MoveProcess();
         TiltProcess();
         FadeProcess();
+        GetTheHeadOut(getHeadOut);
     }
 
     private void MoveProcess()
@@ -194,6 +201,18 @@ public class HelicopterController : MonoBehaviour
             {
                 fade = Fade.None;
             }
+        }
+    }
+
+    private void GetTheHeadOut(bool getTheHeadOut)
+    {
+        if (getTheHeadOut)
+        {
+            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, new Vector3(-0.65f, 0.25f, 0.65f), 0.04f);
+        }
+        else if(CameraMover.transform.localPosition != new Vector3(0f, 0f, 0f))
+        {
+            CameraMover.transform.localPosition = Vector3.Lerp(CameraMover.transform.localPosition, new Vector3(0f, 0f, 0f), 0.1f);
         }
     }
 
