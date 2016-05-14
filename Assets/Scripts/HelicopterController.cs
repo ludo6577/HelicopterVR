@@ -5,16 +5,18 @@ using UnityEngine.UI;
 public class HelicopterController : MonoBehaviour
 {
     public AudioSource HelicopterSound;
-   // public ControlPanel ControlPanel;
+    public AudioSource WindSound;
+    // public ControlPanel ControlPanel;
     public Rigidbody HelicopterModel;
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
 
     public float TurnForce = 3f;
-    public float ForwardForce = 10f;
-    public float ForwardTiltForce = 20f;
+    public float ForwardForce = 15f;
+    public float ForwardTiltForce = 25f;
     public float TurnTiltForce = 30f;
     public float EffectiveHeight = 200f;
+    public float MaxEngineForce = 50f;
 
     public float turnTiltForcePercent = 1.5f;
     public float turnForcePercent = 1.3f;
@@ -25,6 +27,8 @@ public class HelicopterController : MonoBehaviour
         get { return _engineForce; }
         set
         {
+            if (value < 0 || value > MaxEngineForce)
+                return;
             MainRotorController.RotarSpeed = value * 80;
             SubRotorController.RotarSpeed = value * 40;
             HelicopterSound.pitch = Mathf.Clamp(value / 40, 0, 1.2f);
@@ -42,6 +46,9 @@ public class HelicopterController : MonoBehaviour
   
     void FixedUpdate()
     {
+        Debug.Log(HelicopterModel.velocity.magnitude);
+        WindSound.pitch = Mathf.Clamp(HelicopterModel.velocity.magnitude / 30, 0, 1.4f);
+
         var threshold = 5f;
         float tempY = 0;
         float tempX = 0;

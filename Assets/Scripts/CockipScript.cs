@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class CockipScript : MonoBehaviour {
 
     public Transform LevelBack;
+    public Image PowerBar;
 
     private Vector3 initialPosition;
     private Vector3 initialRotation;
@@ -27,5 +30,6 @@ public class CockipScript : MonoBehaviour {
         var rotZ = helicopter.transform.rotation.z;
         LevelBack.transform.localRotation = Quaternion.Euler(rot.x, rot.y, initialRotation.z + rotZ * 60f);
 
+        PowerBar.fillAmount = Mathf.InverseLerp(0, helicopter.MaxEngineForce, helicopter.EngineForce);
     }
 }
