@@ -26,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411798}
   - 205: {fileID: 20545466}
+  - 136: {fileID: 13602954}
   m_Layer: 0
   m_Name: TreeD2
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0029067993, y: 6.114979, z: 0.020851135}
+  m_LocalPosition: {x: 48.914577, y: -6.1887774, z: -114.875916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441622}
@@ -52,7 +53,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108034}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071069, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.9204, y: 7.920401, z: 7.920401}
   m_Children: []
@@ -81,8 +82,7 @@ MeshRenderer:
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 111300000, guid: c6443d3386135b246aec71bb6ffef140,
-    type: 2}
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!33 &3394582
@@ -92,6 +92,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108034}
   m_Mesh: {fileID: 4300004, guid: 791484e502711c042a8e9a45daf0853c, type: 3}
+--- !u!136 &13602954
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.7032166
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 7, z: 0}
 --- !u!205 &20545466
 LODGroup:
   m_ObjectHideFlags: 1
