@@ -28,25 +28,25 @@ public class MapGUIRenderer : MonoBehaviour
         map = GetComponent<Map>();
     }
 
-    void DrawZoomButtons()
-    {
-        float left = map.ScreenLeft + map.ScreenSize;
-        bool rightAligned = Screen.width - (left + iconSize) < iconSize;
-
-        left = rightAligned ? map.ScreenLeft - iconSize : left;
-
-        float offset = rightAligned ? -4f : 4f;
-
-        if (GUI.Button(new Rect(left + offset, map.ScreenTop - 2, iconSize, iconSize), zoomInIcon, iconStyle))
-        {
-            map.ZoomIn();
-        }
-
-        if (GUI.Button(new Rect(left + offset, map.ScreenTop + iconSize, iconSize, iconSize), zoomOutIcon, iconStyle))
-        {
-            map.ZoomOut();
-        }
-    }
+//    void DrawZoomButtons()
+//    {
+//        float left = map.ScreenLeft + map.ScreenSize;
+//        bool rightAligned = Screen.width - (left + iconSize) < iconSize;
+//
+//        left = rightAligned ? map.ScreenLeft - iconSize : left;
+//
+//        float offset = rightAligned ? -4f : 4f;
+//
+//        if (GUI.Button(new Rect(left + offset, map.ScreenTop - 2, iconSize, iconSize), zoomInIcon, iconStyle))
+//        {
+//            map.ZoomIn();
+//        }
+//
+//        if (GUI.Button(new Rect(left + offset, map.ScreenTop + iconSize, iconSize, iconSize), zoomOutIcon, iconStyle))
+//        {
+//            map.ZoomOut();
+//        }
+//    }
 
     void DrawMapItems(ref bool labelDrawn)
     {
@@ -56,49 +56,49 @@ public class MapGUIRenderer : MonoBehaviour
         }
     }
 
-    void DrawLabel()
-    {
-        float top = 0f;
+//    void DrawLabel()
+//    {
+//        float top = 0f;
+//
+//        switch (map.Orientation)
+//        {
+//            case MapOrientation.TopLeft:
+//            case MapOrientation.TopRight:
+//            case MapOrientation.TopCenter:
+//                top = map.ScreenTop + map.ScreenSize + 4;
+//                break;
+//
+//            default:
+//                top = map.ScreenTop - 24f;
+//                break;
+//        }
 
-        switch (map.Orientation)
-        {
-            case MapOrientation.TopLeft:
-            case MapOrientation.TopRight:
-            case MapOrientation.TopCenter:
-                top = map.ScreenTop + map.ScreenSize + 4;
-                break;
-
-            default:
-                top = map.ScreenTop - 24f;
-                break;
-        }
-
-        GUI.Box(new Rect(map.ScreenLeft - 2, top, map.ScreenSize + 4, 20f), "");
-        GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize + 4, 20f), label);
-
-        if (displayCoordinates)
-        {
-            float wTop;
-            float wLeft;
-
-            Vector3 mpos = map.NormalizedMousePosition;
-            Vector3 world = map.TargetPosition;
-
-            if (map.ScreenToMapCoords(mpos.x, mpos.y, out wLeft, out wTop))
-            {
-                world = map.MapToWorldCoords(wLeft, wTop);
-            }
-
-            GUIStyle style = new GUIStyle("Label");
-            style.alignment = TextAnchor.MiddleRight;
-
-            float x = (float)Math.Round(world.x, 2);
-            float z = (float)Math.Round(world.z, 2);
-
-            GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize - 4, 20f), string.Format("Z: {0}", z), style);
-            GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize - 60f, 20f), string.Format("X: {0}", x), style);
-        }
-    }
+//        GUI.Box(new Rect(map.ScreenLeft - 2, top, map.ScreenSize + 4, 20f), "");
+//        GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize + 4, 20f), label);
+//
+//        if (displayCoordinates)
+//        {
+//            float wTop;
+//            float wLeft;
+//
+//            Vector3 mpos = map.NormalizedMousePosition;
+//            Vector3 world = map.TargetPosition;
+//
+//            if (map.ScreenToMapCoords(mpos.x, mpos.y, out wLeft, out wTop))
+//            {
+//                world = map.MapToWorldCoords(wLeft, wTop);
+//            }
+//
+//            GUIStyle style = new GUIStyle("Label");
+//            style.alignment = TextAnchor.MiddleRight;
+//
+//            float x = (float)Math.Round(world.x, 2);
+//            float z = (float)Math.Round(world.z, 2);
+//
+//            GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize - 4, 20f), string.Format("Z: {0}", z), style);
+//            GUI.Label(new Rect(map.ScreenLeft, top, map.ScreenSize - 60f, 20f), string.Format("X: {0}", x), style);
+//        }
+//    }
 
     void DrawPingIcons(ref bool labelDrawn)
     {
@@ -146,8 +146,8 @@ public class MapGUIRenderer : MonoBehaviour
 
         bool labelDrawn = false;
 
-        DrawZoomButtons();
-        DrawLabel();
+//        DrawZoomButtons();
+//        DrawLabel();
         DrawMapItems(ref labelDrawn);
         DrawPingIcons(ref labelDrawn);
     }
