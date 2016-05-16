@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 
 public class CockipScript : MonoBehaviour {
-
+    public Camera MiniMapCamera;
     public Transform LevelBack;
     public Image PowerBar;
 
