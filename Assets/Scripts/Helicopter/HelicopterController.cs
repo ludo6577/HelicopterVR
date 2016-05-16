@@ -220,19 +220,26 @@ public class HelicopterController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter()
+    // Foot touched
+    private void OnCollisionEnter(Collision collision)
     {
         IsOnGround = true;
+    }
+
+    private void OnCollisionExit()
+    {
+        IsOnGround = false;
+    }
+
+
+    // Helicopter body touched (explode)
+    private void OnTriggerEnter()
+    {
         if (fade == Fade.None && HelicopterModel.velocity.magnitude > MagnitudeForExplosion)
         {
             ExplosionParticule.Play();
             ExplosionSound.Play();
             fade = Fade.In;
         }
-    }
-
-    private void OnCollisionExit()
-    {
-        IsOnGround = false;
     }
 }
